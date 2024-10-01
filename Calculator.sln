@@ -1,31 +1,91 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.11.35303.130
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Calculator", "Calculator\Calculator.vcxproj", "{2E6E482C-8E47-496B-9D9D-E22F23EBED12}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2E6E482C-8E47-496B-9D9D-E22F23EBED12}.Debug|x64.ActiveCfg = Debug|x64
-		{2E6E482C-8E47-496B-9D9D-E22F23EBED12}.Debug|x64.Build.0 = Debug|x64
-		{2E6E482C-8E47-496B-9D9D-E22F23EBED12}.Debug|x86.ActiveCfg = Debug|Win32
-		{2E6E482C-8E47-496B-9D9D-E22F23EBED12}.Debug|x86.Build.0 = Debug|Win32
-		{2E6E482C-8E47-496B-9D9D-E22F23EBED12}.Release|x64.ActiveCfg = Release|x64
-		{2E6E482C-8E47-496B-9D9D-E22F23EBED12}.Release|x64.Build.0 = Release|x64
-		{2E6E482C-8E47-496B-9D9D-E22F23EBED12}.Release|x86.ActiveCfg = Release|Win32
-		{2E6E482C-8E47-496B-9D9D-E22F23EBED12}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {DF42593F-F6C9-46E7-910C-29333502B41F}
-	EndGlobalSection
-EndGlobal
+#include <iostream>
+using namespace std;
+
+class Add {
+private:
+    int a, b;
+public:
+    void setValue(int x, int y);
+    int calculate();
+};
+void Add::setValue(int x, int y) {
+    a = x;
+    b = y;
+}
+int Add::calculate() {
+    return a + b;
+}
+
+class Sub {
+private:
+    int a, b;
+public:
+    void setValue(int x, int y);
+    int calculate();
+};
+void Sub::setValue(int x, int y) {
+    a = x;
+    b = y;
+}
+int Sub::calculate() {
+    return a - b;
+}
+
+class Mul {
+private:
+    int a, b;
+public:
+    void setValue(int x, int y);
+    int calculate();
+};
+void Mul::setValue(int x, int y) {
+    a = x;
+    b = y;
+}
+int Mul::calculate() {
+    return a * b;
+}
+
+class Div {
+private:
+    int a, b;
+public:
+    void setValue(int x, int y);
+    int calculate();
+};
+void Div::setValue(int x, int y) {
+    a = x;
+    b = y;
+}
+int Div::calculate() {
+    return a / b;
+}
+
+int main() {
+    Add a;
+    Sub s;
+    Mul m;
+    Div d;
+    int x, y;
+    char c;
+    while (true) {
+        cout << "두 정수와 연산자를 입력하세요>>";
+        cin >> x >> y >> c;
+        if (c == '+') {
+            a.setValue(x, y);
+            cout << a.calculate() << endl;
+        }
+        else if (c == '-') {
+            s.setValue(x, y);
+            cout << s.calculate() << endl;
+        }
+        else if (c == '*') {
+            m.setValue(x, y);
+            cout << m.calculate() << endl;
+        }
+        else if (c == '/') {
+            d.setValue(x, y);
+            cout << d.calculate() << endl;
+        }
+    }
+}
