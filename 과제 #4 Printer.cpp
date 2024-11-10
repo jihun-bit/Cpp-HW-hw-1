@@ -3,10 +3,10 @@
 using namespace std;
 
 class Printer {
-	string model; // ¸ğµ¨¸í
-	string manufacturer; // Á¦Á¶»ç
-	int printedCount; // ÀÎ¼â ¸Å¼ö
-	int availableCount; // ÀÎ¼â Á¾ÀÌ ÀÜ·®
+	string model; // ëª¨ë¸ëª…
+	string manufacturer; // ì œì¡°ì‚¬
+	int printedCount; // ì¸ì‡„ ë§¤ìˆ˜
+	int availableCount; // ì¸ì‡„ ì¢…ì´ ì”ëŸ‰
 public:
 	Printer(string model, string manufacturer, int availableCount) {
 		this->model = model;
@@ -21,19 +21,19 @@ public:
 		if (canPrint(pages)) {
 			availableCount -= pages;
 			printedCount += pages;
-			cout << "ÇÁ¸°Æ®ÇÏ¿´½À´Ï´Ù." << endl;
+			cout << "í”„ë¦°íŠ¸í•˜ì˜€ìŠµë‹ˆë‹¤." << endl;
 		}
 		else {
-			cout << "¿ëÁö°¡ ºÎÁ·ÇÏ¿© ÇÁ¸°Æ®ÇÒ ¼ö ¾ø½À´Ï´Ù." << endl;
+			cout << "ìš©ì§€ê°€ ë¶€ì¡±í•˜ì—¬ í”„ë¦°íŠ¸í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤." << endl;
 		}
 	}
 	void showPrinter(int pages) {
-		cout << model << ", " << manufacturer << ", ³²Àº Á¾ÀÌ " << availableCount << "Àå";
+		cout << model << ", " << manufacturer << ", ë‚¨ì€ ì¢…ì´ " << availableCount << "ì¥";
 	}
 };
 
 class InkJetPrinter : public Printer {
-	int availableInk; // À×Å© ÀÜ·®
+	int availableInk; // ì‰í¬ ì”ëŸ‰
 public:
 	InkJetPrinter(string model, string manufacturer, int availableCount, int availableInk) : Printer(model, manufacturer, availableCount) {
 		this->availableInk = availableInk;
@@ -44,19 +44,19 @@ public:
 	}
 	void printInkJet(int pages) {
 		if (canInkPrint(pages)) {
-			print(pages); // ¿ëÁö°¡ ºÎÁ·ÇÏ´Ù¸é ¿©±â¼­ °É·¯Áü
+			print(pages); // ìš©ì§€ê°€ ë¶€ì¡±í•˜ë‹¤ë©´ ì—¬ê¸°ì„œ ê±¸ëŸ¬ì§
 			availableInk -= pages;
 		}
-		else cout << "À×Å©°¡ ºÎÁ·ÇÏ¿© ÇÁ¸°Æ®¸¦ ÇÒ ¼ö ¾ø½À´Ï´Ù." << endl;
+		else cout << "ì‰í¬ê°€ ë¶€ì¡±í•˜ì—¬ í”„ë¦°íŠ¸ë¥¼ í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤." << endl;
 	}
 	void ShowInkPrinter(int pages) {
 		showPrinter(pages);
-		cout << ", ³²Àº À×Å©" << availableInk << endl;
+		cout << ", ë‚¨ì€ ì‰í¬" << availableInk << endl;
 	}
 };
 
 class LaserPrinter : public Printer {
-	int availableToner; // Åä³Ê ÀÜ·®
+	int availableToner; // í† ë„ˆ ì”ëŸ‰
 public:
 	LaserPrinter(string model, string manufacturer, int availableCount, int availableToner) : Printer(model, manufacturer, availableCount) {
 		this->availableToner = availableToner;
@@ -67,30 +67,30 @@ public:
 	}
 	void printLaser(int pages) {
 		if (canLaserPrint(pages)) {
-			print(pages); // ¿ëÁö°¡ ºÎÁ·ÇÏ´Ù¸é ¿©±â¼­ °É·¯Áü
+			print(pages); // ìš©ì§€ê°€ ë¶€ì¡±í•˜ë‹¤ë©´ ì—¬ê¸°ì„œ ê±¸ëŸ¬ì§
 			availableToner -= pages;
 		}
-		else cout << "À×Å©°¡ ºÎÁ·ÇÏ¿© ÇÁ¸°Æ®¸¦ ÇÒ ¼ö ¾ø½À´Ï´Ù." << endl;
+		else cout << "ì‰í¬ê°€ ë¶€ì¡±í•˜ì—¬ í”„ë¦°íŠ¸ë¥¼ í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤." << endl;
 	}
 	void ShowLaserPrinter(int pages) {
 		showPrinter(pages);
-		cout << ", ³²Àº Åä³Ê" << availableToner << endl;
+		cout << ", ë‚¨ì€ í† ë„ˆ" << availableToner << endl;
 	}
 };
 
 int main() {
-	cout << "ÇöÀç ÀÛµ¿ÁßÀÎ 2 ´ëÀÇ ÇÁ¸°ÅÍ´Â ´ÙÀ½°ú °°´Ù." << endl;
+	cout << "í˜„ì¬ ì‘ë™ì¤‘ì¸ 2 ëŒ€ì˜ í”„ë¦°í„°ëŠ” ë‹¤ìŒê³¼ ê°™ë‹¤." << endl;
 	InkJetPrinter ijp("Officejet V40", "HP", 5, 10);
-	cout << "À×Å©Á¬: ";
+	cout << "ì‰í¬ì ¯: ";
 	ijp.ShowInkPrinter(0);
-	LaserPrinter lp("SCX-6x45", "»ï¼ºÀüÀÚ", 3, 20);
-	cout << "·¹ÀÌÀú: ";
+	LaserPrinter lp("SCX-6x45", "ì‚¼ì„±ì „ì", 3, 20);
+	cout << "ë ˆì´ì €: ";
 	lp.ShowLaserPrinter(0);
 
 	string cont = "y";
 	int type, pages;
 	do {
-		cout << endl << "ÇÁ¸°ÅÍ(1:À×Å©Á¬, 2:·¹ÀÌÀú)¿Í ¸Å¼ö ÀÔ·Â>>";
+		cout << endl << "í”„ë¦°í„°(1:ì‰í¬ì ¯, 2:ë ˆì´ì €)ì™€ ë§¤ìˆ˜ ì…ë ¥>>";
 		cin >> type >> pages;
 		switch (type) {
 		case 1:
@@ -104,7 +104,7 @@ int main() {
 		}
 		ijp.ShowInkPrinter(pages);
 		lp.ShowLaserPrinter(pages);
-		cout << "°è¼Ó ÇÁ¸°Æ® ÇÏ½Ã°Ú½À´Ï±î?(y/n)";
+		cout << "ê³„ì† í”„ë¦°íŠ¸ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?(y/n)";
 		cin >> cont;
 	} while (cont == "y");
 }
